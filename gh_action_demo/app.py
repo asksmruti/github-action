@@ -1,13 +1,13 @@
 from flask import Flask, render_template
-
 import geocoder
+
 
 app = Flask(__name__, template_folder='templates')
 
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template('home.html', task="Meet Annya")
+    return render_template('home.html', task="Meet Smruti")
 
 
 @app.route('/test')
