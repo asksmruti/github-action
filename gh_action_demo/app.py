@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import geocoder
+import os
 
 
 app = Flask(__name__, template_folder='templates')
@@ -17,4 +18,5 @@ def test():
 
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
