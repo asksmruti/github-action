@@ -1,4 +1,4 @@
-name: Automatic Revert
+name: Github Action Demo - Rollback
 
 on:
   issue_comment:
