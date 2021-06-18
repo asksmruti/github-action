@@ -46,7 +46,32 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: true
 
+#    - name: Build container image
+#      uses: docker/build-push-action@v2.5.0
+#      with:
+#        push: true
+#        tags: gh-action:${{ github.sha }}
+#        context: .
+#        secrets: |
+#          GIT_AUTH_TOKEN=${{ secrets.GH_TOKEN }}
+#        github-token:
+#          default = ${{ secrets.GH_TOKEN }}
+
 #     - name: Github Context
 #       run:   echo "$GITHUB_CONTEXT"
 #       env:
 #         GITHUB_CONTEXT: ${{ toJson(github) }}
+
+  build-and-publish-head:
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build and Publish head Docker image
+        uses: VaultVulp/gp-docker-action@1.1.8
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          image-name: gh-action-demo
+          image-tag: ${{ github.sha }}
