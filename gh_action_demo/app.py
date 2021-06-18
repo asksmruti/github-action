@@ -11,7 +11,7 @@ def home():
     return render_template('home.html', task="Meet GP-2")
 
 
-@app.route('/test')
+@app.route('/test', methods=['GET'])
 def test():
     geo_data = geocoder.ip('me').geojson
     return geo_data
