@@ -23,3 +23,14 @@ jobs:
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - uses: jctaveras/heroku-deploy@v1.0.0
+        name: Build, Push and Deploy to Heroku
+        id: heroku
+        with:
+            email: ${{ secrets.HEROKU_EMAIL }}
+            api_key: ${{ secrets.HEROKU_API_KEY }}
+            app_name: 'gh-demo-app'
+            dockerfile_path: './Dockerfile' # set the path to the folder where the Dockerfile is located
+            options: '' # Docker Build Options
+            formation: '' # Docker Dyno Formation. By default is web
