@@ -56,7 +56,7 @@ Please go through the workflows located `.github/workflows/`
 
 Note - The workflow files location is always `.github/workflows/`
 
-Important URLs
+## Important URLs
 
 List of triggers:
 https://docs.github.com/en/actions/reference/events-that-trigger-workflows
